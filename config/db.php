@@ -1,10 +1,8 @@
 <?php
-// config/db.php
-
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'runit');
-define('DB_USER', 'root');
-define('DB_PASS', '');  // default XAMPP has no password
+define('DB_HOST', getenv('DB_HOST') ?: 'sql8.freesqldatabase.com');
+define('DB_NAME', getenv('DB_NAME') ?: 'sql8833107');
+define('DB_USER', getenv('DB_USER') ?: 'sql8833107');
+define('DB_PASS', getenv('DB_PASS') ?: '1kFcb6rrA2');
 
 function getDB() {
     static $pdo = null;
@@ -22,7 +20,7 @@ function getDB() {
             );
         } catch (PDOException $e) {
             http_response_code(500);
-            echo json_encode(['error' => 'Database connection failed']);
+            echo json_encode(['error' => 'Database connection failed: ' . $e->getMessage()]);
             exit;
         }
     }
