@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: runit-backend
+    runtime: php
+    buildCommand: ""
+    startCommand: php -S 0.0.0.0:$PORT -t .
+    envVars:
+      - key: DB_HOST
+        value: your-db-host
+      - key: DB_NAME
+        value: your-db-name
+      - key: DB_USER
+        value: your-db-user
+      - key: DB_PASS
+        value: your-db-pass
