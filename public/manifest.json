@@ -1,0 +1,49 @@
+{
+  "name": "RunIt — Campus Delivery",
+  "short_name": "RunIt",
+  "description": "Get anything delivered on UCC campus. Fast. Cash on delivery.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "background_color": "#0a1f1c",
+  "theme_color": "#00c9a7",
+  "orientation": "portrait-primary",
+  "lang": "en",
+  "categories": ["food", "lifestyle", "utilities"],
+  "icons": [
+    { "src": "/icon-72.png",  "sizes": "72x72",   "type": "image/png" },
+    { "src": "/icon-96.png",  "sizes": "96x96",   "type": "image/png" },
+    { "src": "/icon-128.png", "sizes": "128x128", "type": "image/png" },
+    { "src": "/icon-144.png", "sizes": "144x144", "type": "image/png" },
+    { "src": "/icon-152.png", "sizes": "152x152", "type": "image/png" },
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icon-384.png", "sizes": "384x384", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "screenshots": [
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "RunIt home screen"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Place Order",
+      "short_name": "Order",
+      "url": "/place-order",
+      "icons": [{ "src": "/icon-96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "My Orders",
+      "short_name": "Orders",
+      "url": "/orders",
+      "icons": [{ "src": "/icon-96.png", "sizes": "96x96" }]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}
