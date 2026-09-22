@@ -21,6 +21,7 @@ if ($auth['role'] === 'user') {
             l.changed_at,
             o.id AS order_id,
             o.description,
+            o.category,
             o.final_fee,
             o.proposed_fee,
             o.counter_fee,
@@ -73,13 +74,21 @@ if ($auth['role'] === 'user') {
 
         if ($title) {
             $notifications[] = [
-                'id'       => 'status_' . $log['id'],
-                'type'     => $type,
-                'title'    => $title,
-                'body'     => $body,
-                'icon'     => $icon,
-                'order_id' => $log['order_id'],
-                'time'     => $log['changed_at'],
+                'id'           => 'status_' . $log['id'],
+                'type'         => $type,
+                'title'        => $title,
+                'body'         => $body,
+                'icon'         => $icon,
+                'order_id'     => $log['order_id'],
+                'time'         => $log['changed_at'],
+                // Passed through so the frontend can render a runner tracker
+                // for active statuses without a second round-trip. Already
+                // fetched above via the runners JOIN — previously only used
+                // inline in the 'accepted' body text and discarded otherwise.
+                'order_status' => $log['status'],
+                'category'     => $log['category'],
+                'runner_name'  => $log['runner_name'],
+                'runner_phone' => $log['runner_phone'],
             ];
         }
     }

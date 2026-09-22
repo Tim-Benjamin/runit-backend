@@ -2,6 +2,7 @@
 // api/auth/register_runner.php
 require_once '../../config/cors.php';
 require_once '../../config/db.php';
+require_once '../../config/rate_limit.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') respondError('Method not allowed', 405);
 
@@ -47,6 +48,9 @@ if (!move_uploaded_file($file['tmp_name'], $uploadDir . $filename)) {
 
 // ── Database ────────────────────────────────────────────────────────────────
 $db = getDB();
+
+$ip = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR'] ?? 'unknown';
+checkRateLimit($db, 'register_' . $ip, 10, 3600);
 
 // Check email uniqueness across runners and users
 $stmt = $db->prepare("SELECT id FROM runners WHERE email = ? LIMIT 1");
